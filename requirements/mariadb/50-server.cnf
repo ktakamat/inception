@@ -4,14 +4,14 @@ init_file = /docker-entrypoint-initdb.d/init.sql
 
 [mysqld]
 
-user                    = mysql
+user                    = root
 pid-file                = /run/mysqld/mysqld.pid
 basedir                 = /usr
 datadir                 = /var/lib/mysql
 tmpdir                  = /tmp
 port                    = 3306
 
-bind-address            = mariadb
+bind-address            = 0.0.0.0
 
 expire_logs_days        = 10
 

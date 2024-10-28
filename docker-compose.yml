@@ -14,14 +14,14 @@ services:
  wordpress:
   build: requirements/wordpress/.
   container_name: wp-php
-  # volumes:
-  #   - ./web:/var/www/html
+  volumes:
+    - ./web:/var/www/html
   networks:
    - inception
   depends_on:
    - mariadb
   environment:
-   - WORDPRESS_DB_USER=wpuser
+   - WORDPRESS_DB_USER=mysql
    - WORDPRESS_DB_PASSWORD=password
    - WORDPRESS_DB_NAME=wordpress
    - WORDPRESS_DB_HOST=mariadb
@@ -29,15 +29,15 @@ services:
  mariadb:
   build: requirements/mariadb/.
   container_name: mariadb
-  # volumes:
-  # - ./database:/var/lib/mysql
+  volumes:
+  - ./database:/var/lib/mysql
   networks:
   - inception
   environment:
-   - MYSQL_ROOT_HOST=host
-   - MYSQL_ROOT_PASSWORD=password
+   - MYSQL_ROOT_HOST=root
+   - MYSQL_ROOT_PASSWORD=root
    - MYSQL_DATABASE=wordpress
-   - MYSQL_USER=wpuser
+   - MYSQL_USER=mysql
    - MYSQL_PASSWORD=password
 
 networks:
