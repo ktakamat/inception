@@ -20,8 +20,8 @@ execm:
 	docker exec -it mariadb bash
 
 rmvol:
-	rm -rf srcs/database
-	rm -rf srcs/requirements/wordpress
+	rm -rf database
+	rm -rf web
 
 re: down rmvol up
 
