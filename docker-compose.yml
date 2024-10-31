@@ -20,12 +20,8 @@ services:
    - inception
   depends_on:
    - mariadb
-  environment:
-   - WORDPRESS_DB_USER=mysql
-   - WORDPRESS_DB_PASSWORD=password
-   - WORDPRESS_DB_NAME=wordpress
-   - WORDPRESS_DB_HOST=mariadb
-   - WORDPRESS_DB_PORT=3306
+  env_file:
+  - .env
  mariadb:
   build: requirements/mariadb/.
   container_name: mariadb
@@ -33,12 +29,7 @@ services:
   - ./database:/var/lib/mysql
   networks:
   - inception
-  environment:
-   - MYSQL_ROOT_HOST=root
-   - MYSQL_ROOT_PASSWORD=root
-   - MYSQL_DATABASE=wordpress
-   - MYSQL_USER=mysql
-   - MYSQL_PASSWORD=password
-
+  env_file:
+  - .env
 networks:
  inception: {}
