@@ -3,7 +3,7 @@ FROM debian:bullseye
 RUN apt-get update
 RUN apt-get install -y nginx
 
-COPY default /etc/nginx/sites-available/.
+COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 COPY ./ssl_key/nginx.crt /etc/ssl/certs/server.crt
 COPY ./ssl_key/nginx.key /etc/ssl/certs/server.key
 

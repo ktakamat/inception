@@ -8,14 +8,14 @@ services:
   ports:
    - "443:443"
   volumes:
-   - ./web:/var/www/html
+   - ../web:/var/www/html
   networks:
    - inception
  wordpress:
   build: requirements/wordpress/.
   container_name: wp-php
   volumes:
-    - ./web:/var/www/html
+    - ../web:/var/www/html
   networks:
    - inception
   depends_on:
@@ -26,10 +26,13 @@ services:
   build: requirements/mariadb/.
   container_name: mariadb
   volumes:
-  - ./database:/var/lib/mysql
+  - ../database:/var/lib/mysql
   networks:
   - inception
   env_file:
   - .env
+
+
 networks:
- inception: {}
+ inception:
+  driver: bridge

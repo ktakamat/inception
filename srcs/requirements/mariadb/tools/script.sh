@@ -12,8 +12,8 @@ echo "GRANT ALL PRIVILEGES ON \`${MYSQL_DATABASE}\`.* TO '${MYSQL_USER}'@'%';" >
 
 echo "FLUSH PRIVILEGES;" >> /docker-entrypoint-initdb.d/init.sql
 
-rm -rf /var/lib/mysql/*
-
+# rm -rf /var/lib/mysql/*
+if [ ! -d "/var/lib/mysql/mysql" ]; then
 mysql_install_db --datadir=/var/lib/mysql --user=mysql
-
+fi
 exec "$@"
