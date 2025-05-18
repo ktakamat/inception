@@ -1,5 +1,6 @@
 DOCKER_COMPOSE = docker compose -f ./srcs/docker-compose.yml
 up:
+	@bash /Users/machi/Desktop/42tokyo/in/srcs/requirements/wordpress/tools/mkdir.sh
 	$(DOCKER_COMPOSE) up -d --build
 down:
 	$(DOCKER_COMPOSE) down
