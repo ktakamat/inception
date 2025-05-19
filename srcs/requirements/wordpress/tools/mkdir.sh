@@ -9,3 +9,4 @@ fi
 if [ ! -d "/Users/machi/data/mariadb" ]; then
     mkdir /Users/machi/data/mariadb
 fi
+

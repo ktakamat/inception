@@ -1,7 +1,8 @@
 #!/bin/bash
-
-if [ ! -n "$(ls -A /var/www/html)" ]; then
-cd /var/www/html
+mkdir -p /var/www/html/wordpress
+chown -R www-data:www-data /var/www/html
+if [ ! -n "$(ls -A /var/www/html/wordpress)" ]; then
+cd /var/www/html/wordpress
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 chmod +x wp-cli.phar
 ./wp-cli.phar core download --allow-root

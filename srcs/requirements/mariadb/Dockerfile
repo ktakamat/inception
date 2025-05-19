@@ -1,7 +1,12 @@
 FROM debian:bullseye
 
-RUN apt-get update
-RUN apt-get install -y mariadb-server
+RUN <<EOF
+    apt-get update
+    apt-get install -y mariadb-server
+    apt-get clean
+    rm -rf /var/lib/apt/lists/*
+EOF
+
 
 COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/
 

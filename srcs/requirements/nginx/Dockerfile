@@ -1,10 +1,13 @@
 FROM debian:bullseye
 
 RUN apt-get update
-RUN apt-get install -y nginx
+RUN apt-get install -y nginx\
+    openssl
 
 COPY ./conf/nginx.conf /etc/nginx/nginx.conf
-COPY ./ssl_key/nginx.crt /etc/ssl/certs/server.crt
-COPY ./ssl_key/nginx.key /etc/ssl/certs/server.key
 
+RUN mkdir -p /etc/nginx/ssl
+COPY ./tools/docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+ENTRYPOINT ["docker-entrypoint.sh"]
 CMD [ "nginx", "-g", "daemon off;"]
