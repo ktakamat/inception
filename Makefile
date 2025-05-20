@@ -15,7 +15,7 @@ execn:
 	docker exec -it nginx bash
 
 execw:
-	docker exec -it wp-php bash
+	docker exec -it wordpress bash
 
 execm:
 	docker exec -it mariadb bash

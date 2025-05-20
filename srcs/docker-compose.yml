@@ -18,7 +18,7 @@ services:
   build: 
     context: requirements/wordpress
     dockerfile: Dockerfile
-  container_name: wp-php
+  container_name: wordpress
   restart: always
   volumes:
    - wp-volume:/var/www/html
