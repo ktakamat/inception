@@ -18,11 +18,11 @@ RUN mkdir -p /var/run/mysqld /docker-entrypoint-initdb.d
 
 RUN chown -R mysql:mysql /var/lib/mysql /docker-entrypoint-initdb.d
 
-COPY ./tools/script.sh /script.sh
+COPY ./tools/docker-entrypoint.sh /docker-entrypoint.sh
 
-RUN chmod +x /script.sh
+RUN chmod +x /docker-entrypoint.sh
 
 
-ENTRYPOINT [ "/script.sh" ]
+ENTRYPOINT [ "/docker-entrypoint.sh" ]
 
 CMD ["mysqld_safe"]
